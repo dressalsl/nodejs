@@ -8,11 +8,20 @@ module.exports = {
 
         return res.json(products);
     },
-    
+    async show(req, res) {
+        const product = await Product.findById(rew.params.id); 
+        
+        return res.json(product);
+    },
     async store(req, res) {
         const product = await Product.create(req.body);
         return res.json(product);
         
-    }
+    },
+    async PaymentRequestUpdateEvent(req, res) {
+        const product = await Product.findByIdAndUpdate(req.params.id, req.body, { new: true});
+
+        return product;
+    }, // new true diz q é pra variavel retornar o nv vlr atualizado
 
 };
